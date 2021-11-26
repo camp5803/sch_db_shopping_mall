@@ -50,7 +50,6 @@ const typesRenderer = async (req, res) => {
             }],
             raw: true
         }));
-        console.log(data);
         const len = Math.ceil(await BoardModel.count({
             include: [{
                 model: GoodsModel,

@@ -25,7 +25,6 @@ const boardRenderer = async (req, res) => {
         }],
         raw: true
     }));
-    console.log(data);
     return res.render('board', { data, len, active: req.params.page });
 };
 
@@ -36,12 +35,13 @@ const boardDetailRenderer = async (req, res) => {
             attributes: ['sname']
         }, {
             model: GoodsModel,
-            attributes: ['issold', 'type'],
+            attributes: ['issold', 'type', 'price'],
         }],
         where: { postuid: req.params.bid },
         raw: true
     });
     data.type = data['good.type'];
+    data.price = data['good.price'];
 
     switch (data.type) {
         case 'books':
@@ -120,7 +120,6 @@ const addGoods = async (req, res) => {
 };
 
 const addPost = async (req, res) => {
-    console.log(req.body);
     const goods = await GoodsModel.findOne({
         where: { goodsuid: req.body.goodsuid },
         raw: true
