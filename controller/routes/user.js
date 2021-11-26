@@ -7,6 +7,7 @@ const userHandler = require('../userHandler');
 router.get('/', wrap(userHandler.loginRenderer));
 router.get('/join', wrap(userHandler.signupRenderer));
 router.get('/logout', userHandler.logoutHandler);
+router.get('/profile', wrap(userHandler.profileRenderer));
 
 router.post('/', wrap(userHandler.loginHandler));
 router.post('/join', wrap(userHandler.signupHandler));

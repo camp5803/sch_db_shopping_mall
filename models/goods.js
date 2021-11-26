@@ -8,6 +8,10 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             autoIncrement: true,
         },
+        seller: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         issold: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
@@ -16,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         gname: {
             type: DataTypes.STRING(30),
             allowNull: false,
+            unique: true,
         },
         type: {
             type: DataTypes.STRING(20),

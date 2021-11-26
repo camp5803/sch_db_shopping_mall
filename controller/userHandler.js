@@ -1,7 +1,10 @@
 const passport = require('passport');
+const BoardModel = require('../models').Post;
+const GoodsModel = require('../models').Goods;
 const UserModel = require('../models').Users;
 const crypto = require('crypto');
 const confirmData = require('./lib/signup');
+const { map, filter } = require('./fp');
 
 const loginRenderer = (req, res) => {
     if (req.isAuthenticated()) {
@@ -62,10 +65,26 @@ const logoutHandler = (req, res) => {
     return res.redirect('/');
 }
 
+const profileRenderer = async (req, res) => {
+    const data = map(a => {
+        a.sname = a['user.sname']
+        return a;
+    }, await BoardModel.findAll({
+        order: [['likes', 'DESC']],
+        include: [{
+            model: UserModel,
+            attributes: ['sname']
+        }],
+        raw: true
+    }));
+    return res.render('profile', { data });
+}
+
 module.exports = {
     loginRenderer,
     signupRenderer,
     loginHandler,
     signupHandler,
     logoutHandler,
+    profileRenderer,
 };

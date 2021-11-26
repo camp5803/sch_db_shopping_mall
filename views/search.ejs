@@ -1,0 +1,147 @@
+<!doctype html>
+<html class="theme-dark theme-font">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCH DISE Market</title>
+    <!---->
+    <link rel="stylesheet" href="/css/theme.css">
+    <link rel="stylesheet" href="/css/controls.css">
+    <link rel="stylesheet" href="/css/common.css">
+</head>
+<body>
+<div class="navbar">
+    <div class="navbar-content">
+        <a class="navbar-item-title secu-title-s" href="/">
+            SCH DISE Market
+        </a>
+        <div class="navbar-item">
+            <a class="navbar-link" href="/board">Board</a>
+        </div>
+        <div class="navbar-item">
+            <a class="navbar-link navbar-link-active" href="/types">SEARCH</a>
+        </div>
+        <div class="navbar-item navbar-item-profile">
+            <a class="navbar-link" href="/write">WRITE</a>
+        </div>
+        <div class="navbar-item">
+            <a class="navbar-link" href="/profile">PROFILE</a>
+        </div>
+        <div class="navbar-item">
+            <a class="navbar-link" href="/logout">LOGOUT</a>
+        </div>
+    </div>
+</div>
+<div id="ingame-root">
+    <div class="ingame-content">
+        <div class="challenge-main-container">
+            <div class="challenge-main-item">
+                <div class="challenge-main-title">
+                    CHALLENGE
+                </div>
+            </div>
+            <div class="challenge-main-item">
+                <div class="challenge-map-container">
+                    <div class="challenge-map-item">
+                        <div class="challenge-map-name">
+                            <img src="/img/AmongUs-TheSkeldTitle.png"/>
+                        </div>
+                    </div>
+                    <div class="challenge-map-item">
+                        <div class="challenge-map-img">
+                            <img src="/img/AmongUs-TheSkeldMap.png"/>
+                            <a class="challenge-map-all <% if (type === 'all') { %>challenge-map-selected<% } %>" href="/types/all">
+                                ALL
+                            </a>
+                            <a class="challenge-map-rev <% if (type === 'techs') { %>challenge-map-selected<% } %>" href="/types/techs">
+                                techs
+                            </a>
+                            <a class="challenge-map-pwn <% if (type === 'clothes') { %>challenge-map-selected<% } %>" href="/types/clothes">
+                                clothes
+                            </a>
+                            <a class="challenge-map-for <% if (type === 'houses') { %>challenge-map-selected<% } %>" href="/types/houses">
+                                houses
+                            </a>
+                            <a class="challenge-map-web <% if (type === 'coupons') { %>challenge-map-selected<% } %>" href="/types/coupons">
+                                coupons
+                            </a>
+                            <a class="challenge-map-misc <% if (type === 'foods') { %>challenge-map-selected<% } %>" href="/types/foods">
+                                foods
+                            </a>
+                            <a class="challenge-map-crypt <% if (type === 'books') { %>challenge-map-selected<% } %>" href="/types/books">
+                                books
+                            </a>
+                            <a class="challenge-map-question <% if (type === 'etc') { %>challenge-map-selected<% } %>" href="/types/etc">
+                                ETC
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scoreboard-list-container">
+            <div class="scoreboard-list-item scoreboard-list-item-caption">
+                <div class="scoreboard-list-item-ranking">
+                    <p>번호</p>
+                </div>
+                <hr class="scoreboard-list-item-divider-v divider"/>
+                <div class="scoreboard-list-item-name">
+                    <p>상품명</p>
+                </div>
+                <hr class="scoreboard-list-item-divider-v divider"/>
+                <div class="scoreboard-list-item-solved">
+                    <p>판매여부</p>
+                </div>
+                <hr class="scoreboard-list-item-divider-v divider"/>
+                <div class="scoreboard-list-item-type">
+                    <p>판매자</p>
+                </div>
+                <hr class="scoreboard-list-item-divider-v divider"/>
+                <div class="scoreboard-list-item-score">
+                    <p>좋아요</p>
+                </div>
+            </div>
+            <% for (let i = 0; i < data.length; i++) { %>
+                <a class="scoreboard-list-item-<% if (data[i].issold === 0) { %>ejs<% } else { %>sold<% } %>" href="/board/detail/<%= data[i].postuid %>">
+                    <div class="scoreboard-list-item-ranking">
+                        <p><%= data[i].postuid %></p>
+                    </div>
+                    <hr class="scoreboard-list-item-divider-v divider"/>
+                    <div class="scoreboard-list-item-name">
+                        <p><%= data[i].gname %></p>
+                    </div>
+                    <hr class="scoreboard-list-item-divider-v divider"/>
+                    <div class="scoreboard-list-item-solved">
+                        <p><% if (data[i].issold === 0) { %>판매 전<% } else { %>판매완료<% } %></p>
+                    </div>
+                    <hr class="scoreboard-list-item-divider-v divider"/>
+                    <div class="scoreboard-list-item-type">
+                        <p><%= data[i].sname %></p>
+                    </div>
+                    <hr class="scoreboard-list-item-divider-v divider"/>
+                    <div class="scoreboard-list-item-score">
+                        <p><%= data[i].likes %></p>
+                    </div>
+                </a>
+            <% } %>
+        </div>
+        <br><br>
+        <div class="scoreboard-page-container">
+            <div>
+                <% for (let i = 1; i <= len; i++) { %>
+                    <% if (i == active) { %>
+                        <a class="scoreboard-type-item scoreboard-type-item-active" href="/types/<%=type%>/<%=i%>">
+                            <%= i %>
+                        </a>
+                    <% } else { %>
+                        <a class="scoreboard-type-item" href="/types/<%=type%>/<%=i%>">
+                            <%= i %>
+                        </a>
+                    <% } %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

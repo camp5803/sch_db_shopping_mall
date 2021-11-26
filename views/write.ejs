@@ -1,0 +1,78 @@
+<!doctype html>
+<html class="theme-dark theme-font">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCH DISE Market</title>
+    <!---->
+    <link rel="stylesheet" href="/css/theme.css">
+    <link rel="stylesheet" href="/css/controls.css">
+    <link rel="stylesheet" href="/css/common.css">
+</head>
+<body>
+<div class="navbar">
+    <div class="navbar-content">
+        <a class="navbar-item-title secu-title-s" href="/">
+            SCH DISE Market
+        </a>
+        <div class="navbar-item">
+            <a class="navbar-link" href="/board">Board</a>
+        </div>
+        <div class="navbar-item">
+            <a class="navbar-link" href="/types">SEARCH</a>
+        </div>
+        <div class="navbar-item navbar-item-profile">
+            <a class="navbar-link navbar-link-active" href="/write">WRITE</a>
+        </div>
+        <div class="navbar-item">
+            <a class="navbar-link" href="/profile">PROFILE</a>
+        </div>
+        <div class="navbar-item">
+            <a class="navbar-link" href="/logout">LOGOUT</a>
+        </div>
+    </div>
+</div>
+<div id="ingame-root">
+    <div class="write-content">
+        <div class="notice-main-container">
+            <div class="notice-main-item">
+                <div class="notice-main-title">
+                    WRITE
+                </div>
+            </div>
+            <br>
+            <form class="join-form" action="/write" method="POST">
+                <div class="post-input">
+                    <input class="writebox-tile" type="text" name="postcontent"/>
+                </div>
+                <br><br>
+                <% for (let i = 0; i < data.length; i++) { %>
+                    <div class="goods-add-type">
+                        <div>
+                            <input class="radio-def" type="radio" name="goodsuid" value="<%= data[i].goodsuid %>">
+                            <label for="<%= data[i].goodsuid %>"><%= data[i].gname %></label>
+                        </div>
+                    </div>
+                    <br><br>
+                <% } %>
+                <div class="challenge-detail-submit-item">
+                    <div class="challenge-detail-submit-item-button">
+                        <button class="button-primary-tile">게시글 추가하기</button>
+                    </div>
+                </div>
+            </form>
+            <div class="challenge-detail-submit-item">
+                <form action="/goods">
+                    <div class="challenge-detail-submit-item-button">
+                        <p style="text-align: center;">위의 상품 중 판매 할 것을 고르고</p>
+                        <p style="text-align: center;">상품을 설명해주세요!</p>
+                        <br>
+                        <p style="text-align: center;">만약 선택할 물건이 없다면?</p><br>
+                        <button class="button-primary-tile">물건 추가하기</button>
+                    </div>
+                    <br><br><br><br><br><br><br><br><br>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

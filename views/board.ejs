@@ -1,155 +1,173 @@
 <!doctype html>
 <html class="theme-dark theme-font">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>SCH DISE Market</title>
-        <!---->
-        <link rel="stylesheet" href="/css/theme.css">
-        <link rel="stylesheet" href="/css/controls.css">
-        <link rel="stylesheet" href="/css/common.css">
-    </head>
-    <body>
-        <div class="navbar">
-            <div class="navbar-content">
-                <a class="navbar-item-title secu-title-s" href ="/">
-                    SCH DISE Market
-                </a>
-                <div class="navbar-item">
-                    <a class="navbar-link navbar-link-active" href="/board">Board</a>
-                </div>
-                <div class="navbar-item navbar-item-profile">
-                    <a class="navbar-link" href="/logout">LOGOUT</a>
-                </div>
-            </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCH DISE Market</title>
+    <!---->
+    <link rel="stylesheet" href="/css/theme.css">
+    <link rel="stylesheet" href="/css/controls.css">
+    <link rel="stylesheet" href="/css/common.css">
+</head>
+<body>
+<div class="navbar">
+    <div class="navbar-content">
+        <a class="navbar-item-title secu-title-s" href="/">
+            SCH DISE Market
+        </a>
+        <div class="navbar-item">
+            <a class="navbar-link navbar-link-active" href="/board">Board</a>
         </div>
-        <div id="ingame-root">
-            <div class="ingame-content">
-                <% if (active == 1 ) { %>
-                <div class="scoreboard-main-container">
-                    <div class="scoreboard-main-item">
-                        <div class="scoreboard-main-title">
-                            HOT ITEMS
-                        </div>
-                    </div>
-                    <div class="scoreboard-main-item">
-                        <div class="scoreboard-hof-container">
-                            <% if (data.length >= 2) { %>
-                            <a class="scoreboard-hof-item scoreboard-hof-second" href="/board/detail/<%=data[1].postuid%>">
-                                <div class="scoreboard-hof-second-title">
-                                    2
-                                </div>
-                                <div class="scoreboard-hof-second-img">
-                                    <img src="/img/AmongUs-PetWhite.png" />
-                                </div>
-                                <div class="scoreboard-hof-second-name">
-                                    <p><%=data[1].gname%></p>
-                                </div>
-                                <div class="scoreboard-hof-second-score">
-                                    <p><%=data[1].likes%></p>
-                                </div>
-                                <div class="scoreboard-hof-second-type">
-                                    LIKES
-                                </div>
-                            </a>
-                            <% } %>
-                            <% if (data.length >= 1) { %>
-                            <a class="scoreboard-hof-item scoreboard-hof-first" href="/board/detail/<%=data[0].postuid%>">
-                                <div class="scoreboard-hof-first-title">
-                                    1
-                                </div>
-                                <div class="scoreboard-hof-first-img">
-                                    <img src="/img/AmongUs-PetWhite.png" />
-                                </div>
-                                <div class="scoreboard-hof-first-name">
-                                    <p><%=data[0].gname%></p>
-                                </div>
-                                <div class="scoreboard-hof-first-score">
-                                    <p><%=data[0].likes%></p>
-                                </div>
-                                <div class="scoreboard-hof-first-type">
-                                    LIKES
-                                </div>
-                            </a>
-                            <% } %>
-                            <% if (data.length >= 3) { %>
-                            <a class="scoreboard-hof-item scoreboard-hof-third" href="/board/detail/<%=data[2].postuid%>">
-                                <div class="scoreboard-hof-third-title">
-                                    3
-                                </div>
-                                <div class="scoreboard-hof-third-img">
-                                    <img src="/img/AmongUs-PetWhite.png" />
-                                </div>
-                                <div class="scoreboard-hof-third-name">
-                                    <p><%=data[2].gname%></p>
-                                </div>
-                                <div class="scoreboard-hof-third-score">
-                                    <p><%=data[2].likes%></p>
-                                </div>
-                                <div class="scoreboard-hof-third-type">
-                                    LIKES
-                                </div>
-                            </a>
-                            <% } %>
-                        </div>
+        <div class="navbar-item">
+            <a class="navbar-link" href="/types">SEARCH</a>
+        </div>
+        <div class="navbar-item navbar-item-profile">
+            <a class="navbar-link" href="/write">WRITE</a>
+        </div>
+        <div class="navbar-item">
+            <a class="navbar-link" href="/profile">PROFILE</a>
+        </div>
+        <div class="navbar-item">
+            <a class="navbar-link" href="/logout">LOGOUT</a>
+        </div>
+    </div>
+</div>
+<div id="ingame-root">
+    <div class="ingame-content">
+        <% if (active == 1 ) { %>
+            <div class="scoreboard-main-container">
+                <div class="scoreboard-main-item">
+                    <div class="scoreboard-main-title">
+                        HOT ITEMS
                     </div>
                 </div>
-                <% } %>
-                <div class="scoreboard-list-container">
-                    <div class="scoreboard-list-item scoreboard-list-item-caption">
-                        <div class="scoreboard-list-item-ranking">
-                            <p>번호</p>
-                        </div>
-                        <hr class="scoreboard-list-item-divider-v divider" />
-                        <div class="scoreboard-list-item-name">
-                            <p>상품명</p>
-                        </div>
-                        <hr class="scoreboard-list-item-divider-v divider" />
-                        <div class="scoreboard-list-item-type">
-                            <p>판매자</p>
-                        </div>
-                        <hr class="scoreboard-list-item-divider-v divider" />
-                        <div class="scoreboard-list-item-score">
-                            <p>좋아요</p>
-                        </div>
-                    </div>
-                    <% for (let i = 0; i < data.length; i++) { %>
-                        <a class="scoreboard-list-item-ejs" href="/board/detail/<%=data[i].postuid%>">
-                            <div class="scoreboard-list-item-ranking">
-                                <p><%=data[i].postuid%></p>
+                <div class="scoreboard-main-item">
+                    <div class="scoreboard-hof-container">
+                        <% if (data.length >= 2) { %>
+                        <a class="scoreboard-hof-item scoreboard-hof-second"
+                           href="/board/detail/<%= data[1].postuid %>">
+                            <div class="scoreboard-hof-second-title">
+                                2
                             </div>
-                            <hr class="scoreboard-list-item-divider-v divider" />
-                            <div class="scoreboard-list-item-name">
-                                <p><%=data[i].gname%></p>
+                            <div class="scoreboard-hof-second-img">
+                                <img src="/img/AmongUs-PetWhite.png"/>
                             </div>
-                            <hr class="scoreboard-list-item-divider-v divider" />
-                            <div class="scoreboard-list-item-type">
-                                <p><%=data[i].poster%></p>
+                            <div class="scoreboard-hof-second-name">
+                                <p><%= data[1].gname %></p>
                             </div>
-                            <hr class="scoreboard-list-item-divider-v divider" />
-                            <div class="scoreboard-list-item-score">
-                                <p><%=data[i].likes%></p>
+                            <div class="scoreboard-hof-second-score">
+                                <p><%= data[1].likes %></p>
+                            </div>
+                            <div class="scoreboard-hof-second-type">
+                                LIKES
                             </div>
                         </a>
-                    <% } %>
-                </div>
-                <br><br>
-                <div class="scoreboard-page-container">
-                    <div>
-                        <% for (let i = 1; i <= len; i++) { %>
-                            <% if (i == active) { %>
-                                <a class="scoreboard-type-item scoreboard-type-item-active" href="/board/<%=i%>">
-                                    <%=i%>
-                                </a>
-                            <% } else { %>
-                                <a class="scoreboard-type-item" href="/board/<%=i%>">
-                                    <%=i%>
-                                </a>
-                            <% }%>
+                        <% } %>
+                        <% if (data.length >= 1) { %>
+                        <a class="scoreboard-hof-item scoreboard-hof-first" href="/board/detail/<%= data[0].postuid %>">
+                            <div class="scoreboard-hof-first-title">
+                                1
+                            </div>
+                            <div class="scoreboard-hof-first-img">
+                                <img src="/img/AmongUs-PetWhite.png"/>
+                            </div>
+                            <div class="scoreboard-hof-first-name">
+                                <p><%= data[0].gname %></p>
+                            </div>
+                            <div class="scoreboard-hof-first-score">
+                                <p><%= data[0].likes %></p>
+                            </div>
+                            <div class="scoreboard-hof-first-type">
+                                LIKES
+                            </div>
+                        </a>
+                        <% } %>
+                        <% if (data.length >= 3) { %>
+                        <a class="scoreboard-hof-item scoreboard-hof-third" href="/board/detail/<%= data[2].postuid %>">
+                            <div class="scoreboard-hof-third-title">
+                                3
+                            </div>
+                            <div class="scoreboard-hof-third-img">
+                                <img src="/img/AmongUs-PetWhite.png"/>
+                            </div>
+                            <div class="scoreboard-hof-third-name">
+                                <p><%= data[2].gname %></p>
+                            </div>
+                            <div class="scoreboard-hof-third-score">
+                                <p><%= data[2].likes %></p>
+                            </div>
+                            <div class="scoreboard-hof-third-type">
+                                LIKES
+                            </div>
+                        </a>
                         <% } %>
                     </div>
                 </div>
             </div>
+        <% } %>
+        <div class="scoreboard-list-container">
+            <div class="scoreboard-list-item scoreboard-list-item-caption">
+                <div class="scoreboard-list-item-ranking">
+                    <p>번호</p>
+                </div>
+                <hr class="scoreboard-list-item-divider-v divider"/>
+                <div class="scoreboard-list-item-name">
+                    <p>상품명</p>
+                </div>
+                <hr class="scoreboard-list-item-divider-v divider"/>
+                <div class="scoreboard-list-item-solved">
+                    <p>판매여부</p>
+                </div>
+                <hr class="scoreboard-list-item-divider-v divider"/>
+                <div class="scoreboard-list-item-type">
+                    <p>판매자</p>
+                </div>
+                <hr class="scoreboard-list-item-divider-v divider"/>
+                <div class="scoreboard-list-item-score">
+                    <p>좋아요</p>
+                </div>
+            </div>
+            <% for (let i = 0; i < data.length; i++) { %>
+            <a class="scoreboard-list-item-<% if (data[i].issold === 0) { %>ejs<% } else { %>sold<% } %>" href="/board/detail/<%= data[i].postuid %>">
+                <div class="scoreboard-list-item-ranking">
+                    <p><%= data[i].postuid %></p>
+                </div>
+                <hr class="scoreboard-list-item-divider-v divider"/>
+                <div class="scoreboard-list-item-name">
+                    <p><%= data[i].gname %></p>
+                </div>
+                <hr class="scoreboard-list-item-divider-v divider"/>
+                <div class="scoreboard-list-item-solved">
+                    <p><% if (data[i].issold === 0) { %>판매 전<% } else { %>판매완료<% } %></p>
+                </div>
+                <hr class="scoreboard-list-item-divider-v divider"/>
+                <div class="scoreboard-list-item-type">
+                    <p><%= data[i].sname %></p>
+                </div>
+                <hr class="scoreboard-list-item-divider-v divider"/>
+                <div class="scoreboard-list-item-score">
+                    <p><%= data[i].likes %></p>
+                </div>
+            </a>
+            <% } %>
         </div>
-    </body>
+        <br><br>
+        <div class="scoreboard-page-container">
+            <div>
+                <% for (let i = 1; i <= len; i++) { %>
+                    <% if (i == active) { %>
+                    <a class="scoreboard-type-item scoreboard-type-item-active" href="/board/<%= i %>">
+                        <%= i %>
+                    </a>
+                    <% } else { %>
+                    <a class="scoreboard-type-item" href="/board/<%= i %>">
+                        <%= i %>
+                    </a>
+                    <% } %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 </html>

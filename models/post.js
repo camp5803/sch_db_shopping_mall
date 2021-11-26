@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
         },
         views: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 0
         },
         goodsuid: {
             type: DataTypes.INTEGER,
@@ -27,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         likes: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            defaultValue: 0
         },
         gname: {
             type: DataTypes.STRING(30),

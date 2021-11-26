@@ -11,6 +11,7 @@ const passportConfig = require('./config/passport');
 const sequelize = require('./models').sequelize;
 const userRoutes = require('./controller/routes/user');
 const boardRoutes = require('./controller/routes/board');
+const TypeRoutes = require('./controller/routes/search');
 const app = express();
 
 app.use(session({
@@ -43,6 +44,7 @@ app.use(express.static(__dirname + '/views')); // views로 경로 못찾으면 �
 
 app.use('/', userRoutes);
 app.use('/', boardRoutes);
+app.use('/', TypeRoutes);
 
 sequelize.sync();
 
