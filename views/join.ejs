@@ -1,0 +1,125 @@
+<!doctype html>
+<html class="theme-dark theme-font">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCH DISE Market</title>
+    <!---->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/controls.css">
+    <link rel="stylesheet" href="css/common.css">
+    <script>
+        const confirmPassword = () => {
+            const pw = document.getElementsByName('password');
+            const repw = document.getElementsByName('password2');
+            let errMsg = document.getElementsByName('pwvalerr');
+            let errLength = document.getElementsByName('pwlenerr');
+            let submitColor = document.getElementsByName('subbtn');
+
+            if (pw[0].value != repw[0].value) {
+                errMsg[0].style.display = "inline";
+            } else {
+                errMsg[0].style.display = "none";
+            }
+
+            if (pw[0].value.length < 8) {
+                errLength[0].style.display = "inline";
+            } else {
+                errLength[0].style.display = "none";
+            }
+
+            if (pw[0].value.length < 8 && pw[0].value != repw[0].value) {
+                errMsg[0].style.display = "none";
+                errLength[0].style.display = "inline";
+            }
+
+            if (pw[0].value != repw[0].value || pw[0].value.length < 8) {
+                submitColor[0].style.color = "black";
+                submitColor[0].disabled = true;
+            } else {
+                submitColor[0].style.color = "white";
+                submitColor[0].disabled = false;
+            }
+        }
+
+        const backErrorHandler = (type) => {
+            const frontErr = {
+                id: document.getElementsByName('id'),
+                pw: document.getElementsByName('password'),
+                repw: document.getElementsByName('password2'),
+            }
+
+            let backErr = {
+                id: document.getElementsByName('backiderr'),
+                pw: document.getElementsByName('backpwerr'),
+            };
+
+            switch (type) {
+                case 'pw':
+                    if (frontErr.pw[0].value != null) {
+                        backErr.pw[0].style.display = "none";
+                    }
+                    break;
+                case 'id':
+                    if (frontErr.id[0].value != null) {
+                        backErr.id[0].style.display = "none";
+                    }
+                    break;
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="join-root">
+    <div class="secu-title-xl">
+        DISE Market!
+    </div>
+    <div class="join-card">
+        <form class="join-form" action="/join" method="POST">
+            <div class="join-title">
+                JOIN
+            </div>
+            <div class="join-input">
+                <input class="textbox-tile" name="stuno" type="text" placeholder="아이디" onkeyup="backErrorHandler('id');"/>
+            </div>
+            <% if (err[0] !=null) { %>
+            <p class="label-err-dp" name="backiderr">
+                <%=err[0]%>
+            </p>
+            <% } %>
+            <div class="join-input">
+                <input class="passwordbox-tile" name="password" type="password" placeholder="비밀번호 (영숫자, 특수문자 포함)" maxlength="64" onkeyup="confirmPassword();" onkeydown="backErrorHandler('pw');" />
+            </div>
+            <div class="join-input">
+                <input class="passwordbox-tile" name="password2" type="password" placeholder="비밀번호 확인" maxlength="64" onkeyup="confirmPassword();" onkeydown="backErrorHandler('pw');" />
+            </div>
+            <% if (err[1] !=null) { %>
+            <p class="label-err-dp" name="backpwerr">
+                <%=err[1]%>
+            </p>
+            <% } %>
+            <p class="label-err" name="pwvalerr">비밀번호가 일치하지 않습니다.<br></p>
+            <p class="label-err" name="pwlenerr">비밀번호를 8자리 이상 입력해주세요.</p>
+            <div class="join-input">
+                <input class="textbox-tile" type="text" name="sname" placeholder="이름" />
+            </div>
+            <div class="join-input">
+                <input class="textbox-tile" type="text" name="dept" placeholder="학과" />
+            </div>
+            <div class="join-input">
+                <input class="textbox-tile" type="text" name="telno" placeholder="휴대전화" />
+            </div>
+            <div class="join-input">
+                <input class="textbox-tile" type="text" name="address" placeholder="주소" />
+            </div>
+            <div class="join-register">
+                <button class="button-primary-tile" name="subbtn">가입</button>
+            </div>
+            <div class="play-back">
+                <a class="button-text" href="/" disable>돌아가기</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

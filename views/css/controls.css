@@ -1,0 +1,316 @@
+/* --------------------  button  -------------------- */
+
+.button-tile {
+    appearance: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-family: var(--font-nanum-square-round-b);
+    font-size: 25px;
+    text-decoration: none;
+
+    color: var(--button-tile-foreground-normal);
+    background-color: var(--button-tile-background-normal);
+}
+.button-tile:hover {
+    color: var(--button-tile-foreground-hover);
+    background-color: var(--button-tile-background-hover);
+}
+.button-tile:active {
+    color: var(--button-tile-foreground-press);
+    background-color: var(--button-tile-background-press);
+}
+.button-tile:disabled {
+    color: var(--button-tile-foreground-disable);
+    background-color: var(--button-tile-background-disable);
+}
+.button-tile > * {
+    margin: 0;
+    padding: 0;
+    display: inline;
+    overflow-x: hidden;
+}
+
+.button-primary-tile {
+    appearance: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-family: var(--font-nanum-square-round-b);
+    font-size: 25px;
+    text-decoration: none;
+
+    color: var(--button-primary-tile-foreground-normal);
+    background-color: var(--button-primary-tile-background-normal);
+}
+.button-primary-tile:hover {
+    color: var(--button-primary-tile-foreground-hover);
+    background-color: var(--button-primary-tile-background-hover);
+}
+.button-primary-tile:active {
+    color: var(--button-primary-tile-foreground-press);
+    background-color: var(--button-primary-tile-background-press);
+}
+.button-primary-tile:disabled {
+    color: var(--button-primary-tile-foreground-disable);
+    background-color: var(--button-primary-tile-background-disable);
+}
+.button-primary-tile > * {
+    margin: 0;
+    padding: 0;
+    display: inline;
+    overflow-x: hidden;
+}
+
+.button-text {
+    appearance: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-family: var(--font-nanum-square-round-b);
+    font-size: 25px;
+    text-decoration: none;
+
+    color: var(--button-text-foreground-normal);
+    background-color: var(--button-text-background);
+}
+.button-text:hover {
+    color: var(--button-text-foreground-hover);
+} 
+.button-text:active {
+    color: var(--button-text-foreground-press);
+}
+.button-text:disabled {
+    color: var(--button-text-foreground-disable);
+}
+.button-text > * {
+    margin: 0;
+    padding: 0;
+    display: inline;
+    overflow-x: hidden;
+}
+
+/* --------------------  textbox  -------------------- */
+
+input[type="text"].textbox-tile {
+    margin: 0;
+    padding: 7px 10px 7px 15px;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    font-family: var(--font-nanum-square-round-b);
+    font-size: 20px;
+
+    color: var(--textbox-tile-foreground-normal);
+    background-color: var(--textbox-tile-background-normal);
+}
+input[type="text"].textbox-tile::placeholder {
+    font-family: var(--font-nanum-square-round-b);
+    font-size: 20px;
+    color: var(--textbox-tile-placeholder);
+}
+input[type="text"].textbox-tile:hover {
+    color: var(--textbox-tile-foreground-hover);
+    background-color: var(--textbox-tile-background-hover);
+}
+input[type="text"].textbox-tile:focus {
+    color: var(--textbox-tile-foreground-focus);
+    background-color: var(--textbox-tile-background-focus);
+}
+input[type="text"].textbox-tile:disabled {
+    color: var(--textbox-tile-foreground-disable);
+    background-color: var(--textbox-tile-background-disable);
+}
+
+/* --------------------  passwordbox  -------------------- */
+
+input[type="password"].passwordbox-tile {
+    margin: 0;
+    padding: 7px 10px 7px 15px;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    font-family: var(--font-nanum-square-round-b);
+    font-size: 20px;
+
+    color: var(--passwordbox-tile-foreground-normal);
+    background-color: var(--passwordbox-tile-background-normal);
+}
+input[type="password"].passwordbox-tile::placeholder {
+    font-family: var(--font-nanum-square-round-b);
+    font-size: 20px;
+    color: var(--passwordbox-tile-placeholder);
+}
+input[type="password"].passwordbox-tile:hover {
+    color: var(--passwordbox-tile-foreground-hover);
+    background-color: var(--passwordbox-tile-background-hover);
+}
+input[type="password"].passwordbox-tile:focus {
+    color: var(--passwordbox-tile-foreground-focus);
+    background-color: var(--passwordbox-tile-background-focus);
+}
+input[type="password"].passwordbox-tile:disabled {
+    color: var(--passwordbox-tile-foreground-disable);
+    background-color: var(--passwordbox-tile-background-disable);
+}
+
+/* --------------------  radio  -------------------- */
+
+input[type="radio"].radio-def {
+    appearance: none;
+    margin: 0;
+    padding: 0;
+    min-width: 25px;
+    min-height: 25px;
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+
+    background-color: var(--radio-def-background-normal);
+}
+input[type="radio"].radio-def:hover {
+    background-color: var(--radio-def-background-hover);
+}
+input[type="radio"].radio-def:checked {
+    background-color: var(--radio-def-background-check);
+}
+input[type="radio"].radio-def + label {
+    margin: 0 0 0 15px;
+    padding: 0;
+    
+    cursor: pointer;
+
+    font-family: var(--font-nanum-square-round-b);
+    font-size: 20px;
+}  
+
+/* --------------------  divider  -------------------- */
+
+.divider {
+    border: 1px solid var(--color-grey-trans-100);
+}
+
+/* --------------------  navbar  -------------------- */
+
+.navbar {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 80px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--color-grey-30);
+    box-sizing: border-box;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+
+    background-color: var(--color-grey-20);
+}
+.navbar-content {
+    margin: 0 calc((100% - 1320px) / 2);
+    padding: 0 20px;
+    width: 1320px;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    position:relative;
+}
+.navbar-item {
+    margin: 0 0 0 15px;
+    padding: 0;
+    background-color: var(--color-transparency);
+}
+.navbar-item-title {
+    text-decoration: none;
+    margin: 0 40px 0 0;
+    padding: 0;
+    background-color: var(--color-transparency);
+}
+.navbar-item-title:visited {
+    text-decoration: none;
+    color: var(--color-grey-100);
+}
+.navbar-item-title:hover {
+    color: var(--color-grey-80);
+}
+.navbar-item-title:active {
+    color: var(--color-grey-40);
+}
+.navbar-item-profile {
+    margin: 0 0 0 auto;
+    padding: 0;
+    background-color: var(--color-transparency);
+}
+.navbar-link {
+    text-decoration: none;
+    color: var(--color-grey-70);
+
+    cursor: pointer;
+
+    font-family: var(--font-happy-doodle);
+    font-size: 30px;
+}
+.navbar-link:hover {
+    color: var(--color-grey-100);
+}
+.navbar-link:active {
+    color: var(--color-primary-45);
+}
+.navbar-link-active {
+    color: var(--color-primary-45);
+}
+.navbar-link-logo {
+    text-decoration: none;
+    color: var(--color-grey-100);
+
+    cursor: pointer;
+
+    font-family: var(--font-happy-doodle);
+    font-size: 30px;
+}
+.navbar-link-logo:hover {
+    color: var(--color-grey-80);
+}
+.navbar-link-logo:active {
+    color: var(--color-grey-70);
+}

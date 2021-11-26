@@ -1,0 +1,123 @@
+<!doctype html>
+<html class="theme-dark theme-font">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCH DISE Market</title>
+    <!---->
+    <link rel="stylesheet" href="/css/theme.css">
+    <link rel="stylesheet" href="/css/controls.css">
+    <link rel="stylesheet" href="/css/common.css">
+</head>
+<body>
+<div class="navbar">
+    <div class="navbar-content">
+        <a class="navbar-item-title secu-title-s" href ="/">
+            SCH DISE Market
+        </a>
+        <div class="navbar-item">
+            <a class="navbar-link navbar-link-active" href="/board">Board</a>
+        </div>
+        <div class="navbar-item navbar-item-profile">
+            <a class="navbar-link" href="/logout">LOGOUT</a>
+        </div>
+    </div>
+</div>
+        <div id="ingame-root">
+            <div class="ingame-content">
+                <div class="challenge-detail-main-container">
+                    <div class="challenge-detail-main-item">
+                        <div class="challenge-detail-main-item-title">
+                            <%=data.gname%>
+                        </div>
+                    </div>
+                    <div class="challenge-detail-main-item">
+                        <div class="challenge-detail-main-item-meta">
+                            <span>판매자</span>
+                            <span><%=data.sname%></span>
+                            <hr class="challenge-detail-main-item-divider-v divider" />
+                            <span>LIKES</span>
+                            <span><%=data.likes%></span>
+                        </div>
+                    </div>
+                    <div class="challenge-detail-main-item">
+                        <div class="challenge-detail-main-item-divider-h">
+                            <hr class="divider" />
+                        </div>
+                    </div>
+                    <div class="challenge-detail-main-item-title">
+                        <img src="https://picsum.photos/400/400" alt="">
+                    </div>
+                    <div class="challenge-detail-main-item">
+                        <br>
+                        <div class="challenge-detail-main-text">
+                            <p><%=data.postcontent%></p>
+                        </div>
+                    </div>
+                    <br>
+                    <form action="/board/detail/<%=current%>/like" method="POST">
+                    <div class="challenge-detail-submit-item">
+                        <div class="challenge-detail-like-item-button">
+                            <button class="button-primary-tile">LIKE</button>
+                        </div>
+                    </div>
+                    </form>
+                    <br>
+                </div>
+                <br><br>
+                <div class="challenge-detail-main-container">
+                    <div class="challenge-detail-main-item">
+                        <form class="challenge-detail-submit-form" action="/board/detail/<%=current%>/reply" method="POST">
+                            <div class="challenge-detail-submit-item">
+                                <div class="challenge-detail-submit-item-flag">
+                                    <input class="textbox-tile" type="text" name="content" placeholder="댓글" />
+                                </div>
+                            </div>
+<!--                            <div class="challenge-detail-submit-item">-->
+<!--                                <div class="challenge-detail-submit-item-expl">-->
+<!--                                    <input class="textbox-tile" type="text" placeholder="풀이방법" />-->
+<!--                                </div>-->
+<!--                            </div>-->
+                            <div class="challenge-detail-submit-item">
+                                <div class="challenge-detail-submit-item-button">
+                                    <button class="button-primary-tile">작성하기</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <br><br>
+                <div class="challenge-detail-solver-container">
+                    <div class="challenge-detail-solver-item challenge-detail-solver-item-caption">
+                        <div class="challenge-detail-solver-item-type">
+                            <p>이름</p>
+                        </div>
+                        <hr class="challenge-detail-solver-item-divider-v divider" />
+                        <div class="challenge-detail-solver-item-name">
+                            <p>내용</p>
+                        </div>
+                        <hr class="challenge-detail-solver-item-divider-v divider" />
+                        <div class="challenge-detail-solver-item-date">
+                            <p>작성 시간</p>
+                        </div>
+                    </div>
+                    <% for (let i=0; i<reply.length; i++) { %>
+                        <div class="challenge-detail-solver-item">
+                            <div class="challenge-detail-solver-item-type">
+                                <p><%=reply[i].sname%></p>
+                            </div>
+                            <hr class="challenge-detail-solver-item-divider-v divider" />
+                            <div class="challenge-detail-solver-item-name">
+                                <p><%=reply[i].replycontent%></p>
+                            </div>
+                            <hr class="challenge-detail-solver-item-divider-v divider" />
+                            <div class="challenge-detail-solver-item-date">
+                                <p><%=reply[i].createdAt%></p>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

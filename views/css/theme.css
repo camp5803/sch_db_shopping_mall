@@ -1,0 +1,115 @@
+html.theme-dark {
+    /* color */
+    --color-primary-45: hsl(169, 100%, 45%);
+    --color-primary-50: hsl(169, 100%, 50%);
+    --color-primary-68: hsl(169, 100%, 68%);
+
+    --color-success-50: hsl(140, 100%, 50%);
+    --color-success-60: hsl(140, 100%, 60%);
+    --color-success-70: hsl(140, 100%, 70%);
+
+    --color-info-50: hsl(260, 100%, 50%);
+    --color-info-60: hsl(260, 100%, 60%);
+    --color-info-70: hsl(260, 100%, 70%);
+
+    --color-warning-50: hsl(50, 100%, 50%);
+    --color-warning-60: hsl(50, 100%, 60%);
+    --color-warning-70: hsl(50, 100%, 70%);
+
+    --color-danger-50: hsl(347, 100%, 50%);
+    --color-danger-60: hsl(347, 100%, 60%);
+    --color-danger-70: hsl(347, 100%, 70%);
+
+    --color-grey-0: hsl(0, 0%, 0%);
+    --color-grey-10: hsl(0, 0%, 10%);
+    --color-grey-20: hsl(0, 0%, 20%);
+    --color-grey-30: hsl(0, 0%, 30%);
+    --color-grey-40: hsl(0, 0%, 40%);
+    --color-grey-70: hsl(0, 0%, 70%);
+    --color-grey-80: hsl(0, 0%, 80%);
+    --color-grey-90: hsl(0, 0%, 90%);
+    --color-grey-100: hsl(0, 0%, 100%);
+
+    --color-grey-trans-10: hsla(0, 0%, 10%, 0.75);
+    --color-grey-trans-20: hsla(0, 0%, 20%, 0.75);
+    --color-grey-trans-30: hsla(0, 0%, 30%, 0.75);
+    --color-grey-trans-100: hsla(0, 0%, 100%, 0.4);
+
+    --color-transparency: transparent;
+
+    /* button */
+    --button-tile-background-normal: var(--color-grey-10);
+    --button-tile-background-hover: var(--color-grey-20);
+    --button-tile-background-press: var(--color-primary-45);
+    --button-tile-background-disable: var(--color-grey-30);
+    --button-tile-foreground-normal: var(--color-grey-100);
+    --button-tile-foreground-hover: var(--color-grey-100);
+    --button-tile-foreground-press: var(--color-grey-100);
+    --button-tile-foreground-disable: var(--color-grey-80);
+    
+    --button-primary-tile-background-normal: var(--color-primary-45);
+    --button-primary-tile-background-hover: var(--color-primary-50);
+    --button-primary-tile-background-press: var(--color-primary-68);
+    --button-primary-tile-background-disable: var(--color-primary-50);
+    --button-primary-tile-foreground-normal: var(--color-grey-100);
+    --button-primary-tile-foreground-hover: var(--color-grey-100);
+    --button-primary-tile-foreground-press: var(--color-grey-100);
+    --button-primary-tile-foreground-disable: var(--color-grey-80);
+
+    --button-text-background: transparent;
+    --button-text-foreground-normal: var(--color-grey-80);
+    --button-text-foreground-hover: var(--color-grey-100);
+    --button-text-foreground-press: var(--color-primary-45);
+    --button-text-foreground-disable: var(--color-grey-70);
+
+    /* textbox */
+    --textbox-tile-placeholder: var(--color-grey-70);
+    --textbox-tile-background-normal: var(--color-grey-10);
+    --textbox-tile-background-hover: var(--color-grey-20);
+    --textbox-tile-background-focus: var(--color-grey-10);
+    --textbox-tile-background-disable: var(--color-grey-10);
+    --textbox-tile-foreground-normal: var(--color-grey-100);
+    --textbox-tile-foreground-hover: var(--color-grey-100);
+    --textbox-tile-foreground-focus: var(--color-grey-100);
+    --textbox-tile-foreground-disable: var(--color-grey-70);
+
+    /* passwordbox */
+    --passwordbox-tile-placeholder: var(--color-grey-70);
+    --passwordbox-tile-background-normal: var(--color-grey-10);
+    --passwordbox-tile-background-hover: var(--color-grey-20);
+    --passwordbox-tile-background-focus: var(--color-grey-10);
+    --passwordbox-tile-background-disable: var(--color-grey-10);
+    --passwordbox-tile-foreground-normal: var(--color-grey-100);
+    --passwordbox-tile-foreground-hover: var(--color-grey-100);
+    --passwordbox-tile-foreground-focus: var(--color-grey-100);
+    --passwordbox-tile-foreground-disable: var(--color-grey-70);
+
+    /* radio */
+    --radio-def-background-normal: var(--color-grey-10);
+    --radio-def-background-hover: var(--color-grey-20);
+    --radio-def-background-check: var(--color-primary-45);
+}
+
+html.theme-font {
+    --font-happy-doodle: HappyDoodle;
+    --font-nanum-square-round-l: NanumSquareRoundL;
+    --font-nanum-square-round-r: NanumSquareRoundR;
+    --font-nanum-square-round-b: NanumSquareRoundB;
+}
+
+@font-face { 
+    font-family: 'HappyDoodle'; 
+    src: url('../font/HappyDoodle.otf') format('opentype');
+}
+@font-face { 
+    font-family: 'NanumSquareRoundL'; 
+    src: url('../font/NanumSquareRoundL.otf') format('opentype');
+}
+@font-face { 
+    font-family: 'NanumSquareRoundR'; 
+    src: url('../font/NanumSquareRoundR.otf') format('opentype');
+}
+@font-face { 
+    font-family: 'NanumSquareRoundB'; 
+    src: url('../font/NanumSquareRoundB.otf') format('opentype');
+}

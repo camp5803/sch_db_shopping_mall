@@ -1,0 +1,41 @@
+<!doctype html>
+<html class="theme-dark theme-font">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SCH DISE Market</title>
+        <!---->
+        <link rel="stylesheet" href="../css/theme.css">
+        <link rel="stylesheet" href="../css/controls.css">
+        <link rel="stylesheet" href="../css/common.css">
+    </head>
+    <body>
+        <div id="play-root">
+            <div class="secu-title-xl">
+                DISE MARKET!
+            </div>
+            <div class="play-card">
+                <form class="play-form" action="/" method="POST">
+                    <div class="play-title">
+                        PLAY
+                    </div>
+                    <% if (err) { %>
+                    <p class ="label-err-login"><%=err%></p>
+                    <% } %>
+                    <div class="play-input">
+                        <input class="textbox-tile" type="text" name="stuno" placeholder="학번" />
+                    </div>
+                    <div class="play-input">
+                        <input class="passwordbox-tile" type="password" name="password" placeholder="비밀번호" />
+                    </div>
+                    <div class="play-login">
+                        <button class="button-primary-tile">로그인</button>
+                    </div>
+                    <div class="play-join">
+                        <a class="button-text" href="/join" disable>가입이 필요한가요?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
