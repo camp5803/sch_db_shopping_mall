@@ -4,7 +4,8 @@
 
 ## Summary 
 순천향대학교 재학생을 위한 중고장터   
-node.js + express + bootstrap + mariadb
+- Back-End: node.js + express + mariadb
+- Front-End: html + css (vanilla style, no bootstrap)
 
 ## Domain
 http://lovememore.kro.kr/
