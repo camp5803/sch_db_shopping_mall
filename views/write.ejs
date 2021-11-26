@@ -50,7 +50,8 @@
                     <div class="goods-add-type">
                         <div>
                             <input class="radio-def" type="radio" name="goodsuid" value="<%= data[i].goodsuid %>">
-                            <label for="<%= data[i].goodsuid %>"><%= data[i].gname %></label>
+                            <label for="<%= data[i].goodsuid %>"><%= data[i].gname %> &nbsp-</label>
+                            <a style="text-decoration: none; color: var(--color-primary-45); font-size: 20px;" href="/goods/delete/<%=data[i].goodsuid%>">&nbsp삭제하기</a>
                         </div>
                     </div>
                     <br><br>

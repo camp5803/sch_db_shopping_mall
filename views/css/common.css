@@ -1124,10 +1124,23 @@ a.challenge-prob-item-solved:active {
     width: 100px;
 }
 .challenge-detail-solver-item-name {
-    width: 820px;
+    width: 740px;
 }
 .challenge-detail-solver-item-date {
     width: 270px;
+}
+.challenge-detail-solver-item-delete {
+    width: 80px;
+    text-decoration-line: none;
+    color: var(--color-grey-100);
+}
+.challenge-detail-solver-item-delete:hover {
+    text-decoration-line: none;
+    color: var(--color-grey-70);
+}
+.challenge-detail-solver-item-delete:active {
+    text-decoration-line: none;
+    color: var(--color-primary-45);
 }
 .challenge-detail-solver-item-type > p,
 .challenge-detail-solver-item-name > p,

@@ -411,6 +411,27 @@ input[type="radio"].radio-def + label {
 .navbar-link:active {
     color: var(--color-primary-45);
 }
+
+/**/
+
+.likebar-link {
+    text-decoration: none;
+    color: var(--color-danger-70);
+
+    cursor: pointer;
+
+    font-family: var(--font-happy-doodle);
+    font-size: 50px;
+}
+.likebar-link:hover {
+    color: var(--color-danger-60);
+}
+.likebar-link:active {
+    color: var(--color-danger-70);
+}
+
+/**/
+
 .navbar-link-active {
     color: var(--color-primary-45);
 }

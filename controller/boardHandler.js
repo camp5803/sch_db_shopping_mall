@@ -36,11 +36,34 @@ const boardDetailRenderer = async (req, res) => {
             attributes: ['sname']
         }, {
             model: GoodsModel,
-            attributes: ['issold'],
+            attributes: ['issold', 'type'],
         }],
         where: { postuid: req.params.bid },
         raw: true
     });
+    data.type = data['good.type'];
+
+    switch (data.type) {
+        case 'books':
+            data.type = "도서"
+            break;
+        case 'clothes':
+            data.type = "의류"
+            break;
+        case 'houses':
+            data.type = "생활용품"
+            break;
+        case 'coupons':
+            data.type = "기프티콘"
+            break;
+        case 'foods':
+            data.type = "음식"
+            break;
+        default:
+            data.type = "기타"
+            break;
+    }
+
     data.issold = data['good.issold'];
     data.sname = data['user.sname'];
     const reply = map(a => {
@@ -55,7 +78,7 @@ const boardDetailRenderer = async (req, res) => {
         where: { postuid: req.params.bid },
         raw: true
     }));
-    return res.render('board-detail', { data, reply, current: req.params.bid });
+    return res.render('board-detail', { data, reply, current: req.params.bid, uuid: req.user.uuid });
 };
 
 const likeIncrement = async (req, res) => {
@@ -122,6 +145,27 @@ const payGoods = async (req, res) => {
     return res.redirect(`/board/detail/${req.params.bid}`);
 }
 
+const deleteReply = async (req, res) => {
+    await ReplyModel.destroy({
+        where: { replyuid: req.params.rid },
+    });
+    return res.redirect(`/board/detail/${req.params.bid}`);
+}
+
+const deletePost = async (req, res) => {
+    await BoardModel.destroy({
+        where: { postuid: req.params.bid },
+    });
+    return res.redirect('/');
+}
+
+const deleteGoods = async (req, res) => {
+    await GoodsModel.destroy({
+        where: { goodsuid: req.params.gid },
+    });
+    return res.redirect('/write');
+}
+
 module.exports = {
     boardRenderer,
     boardDetailRenderer,
@@ -131,5 +175,8 @@ module.exports = {
     goodsRenderer,
     addGoods,
     addPost,
-    payGoods
+    payGoods,
+    deleteReply,
+    deletePost,
+    deleteGoods,
 };

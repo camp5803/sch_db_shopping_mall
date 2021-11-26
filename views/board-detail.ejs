@@ -45,8 +45,15 @@
                     <span>판매자</span>
                     <span><%= data.sname %></span>
                     <hr class="challenge-detail-main-item-divider-v divider"/>
-                    <span>LIKES</span>
-                    <span><%= data.likes %></span>
+                    <span>상품 종류 - </span>
+                    <span><%= data.type %></span>
+                    <hr class="challenge-detail-main-item-divider-v divider"/>
+                    <span>판매 여부 - </span>
+                    <span><% if (data.issold === 0) { %>판매 중<% } else { %>판매 완료<% } %></span>
+                    <% if (uuid === data.poster) { %>
+                    <hr class="challenge-detail-main-item-divider-v divider"/>
+                    <a style="text-decoration-line: none; color: var(--color-primary-45);" href="/board/detail/delete/<%=data.postuid%>">삭제하기</a>
+                    <% } %>
                 </div>
             </div>
             <div class="challenge-detail-main-item">
@@ -65,13 +72,15 @@
             </div>
             <br>
             <% if (data.issold === 0) { %>
-            <form action="/board/detail/<%= current %>/like" method="POST">
-                <div class="challenge-detail-submit-item">
-                    <div class="challenge-detail-like-item-button">
-                        <button class="button-primary-tile-like">LIKE</button>
-                    </div>
-                </div>
-            </form><br><br>
+            <a class="likebar-link" href="/board/detail/<%= current %>/like">LIKE - <%= data.likes %></a>
+<!--            <form action="/board/detail/<%= current %>/like" method="POST">-->
+<!--                <div class="challenge-detail-submit-item">-->
+<!--                    <div class="challenge-detail-like-item-button">-->
+<!--                        <button class="button-primary-tile-like">LIKE</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </form>-->
+                <br><br>
             <form action="/board/detail/<%= current %>/payment" method="POST">
                 <div class="challenge-detail-submit-item">
                     <div class="challenge-detail-pay-item-button">
@@ -118,6 +127,10 @@
                 <div class="challenge-detail-solver-item-date">
                     <p>작성 시간</p>
                 </div>
+                <hr class="challenge-detail-solver-item-divider-v divider"/>
+                <div class="challenge-detail-solver-item-delete">
+                    <p></p>
+                </div>
             </div>
             <% for (let i = 0; i < reply.length; i++) { %>
             <div class="challenge-detail-solver-item">
@@ -132,6 +145,14 @@
                 <div class="challenge-detail-solver-item-date">
                     <p><%= reply[i].createdAt %></p>
                 </div>
+                <hr class="challenge-detail-solver-item-divider-v divider"/>
+                <% if (reply[i].replier === data.poster) { %>
+                <a class="challenge-detail-solver-item-delete" href="/board/detail/<%=data.postuid%>/reply/delete/<%=reply[i].replyuid%>">
+                    <p>삭제하기</p>
+                </a>
+                <% } else { %>
+                <a class="challenge-detail-solver-item-delete"></a>
+                <% } %>
             </div>
             <% } %>
         </div>

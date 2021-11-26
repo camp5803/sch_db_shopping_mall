@@ -65,18 +65,3 @@ module.exports = {
     defaultRenderer,
     typesRenderer,
 }
-
-// switch (req.params.type) {
-//     case 'books':
-//         break;
-//     case 'clothes':
-//         break;
-//     case 'houses':
-//         break;
-//     case 'coupons':
-//         break;
-//     case 'foods':
-//         break;
-//     default:
-//         break;
-// }
