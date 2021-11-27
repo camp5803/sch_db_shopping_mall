@@ -100,7 +100,7 @@ const addComment = async (req, res) => {
 
 const writeRenderer = async (req, res) => {
     const data = map(a => a.toJSON(), await GoodsModel.findAll({
-        where: { seller: req.user.uuid }
+        where: { seller: req.user.uuid, isposted: false },
     }));
     return res.render('write', { data });
 };
@@ -108,6 +108,23 @@ const writeRenderer = async (req, res) => {
 const goodsRenderer = (req, res) => {
     return res.render('goods');
 };
+
+const exchangeRenderer = async (req, res) => {
+    const target = await BoardModel.findOne({
+        where: { postuid: req.params.bid },
+        include: [{
+            model: GoodsModel,
+            attributes: ['price']
+        }],
+        raw: true
+    });
+    target.price = target['good.price'];
+
+    const data = map(a => a.toJSON(), await GoodsModel.findAll({
+        where: { seller: req.user.uuid, issold: false, price: target.price },
+    }));
+    return res.render('exchange', { data, current: req.params.bid });
+}
 
 const addGoods = async (req, res) => {
     await GoodsModel.create({
@@ -120,6 +137,12 @@ const addGoods = async (req, res) => {
 };
 
 const addPost = async (req, res) => {
+    if (req.file === undefined) {
+        req.file = {
+            'filename': 0
+        }
+    }
+    console.log(req.file);
     const goods = await GoodsModel.findOne({
         where: { goodsuid: req.body.goodsuid },
         raw: true
@@ -129,6 +152,12 @@ const addPost = async (req, res) => {
         postcontent: req.body.postcontent,
         goodsuid: req.body.goodsuid,
         gname: goods.gname,
+        imgpath: req.file.filename
+    });
+    await GoodsModel.update({
+        isposted: true
+    }, {
+        where: { goodsuid: req.body.goodsuid }
     });
     return res.redirect('/');
 };
@@ -152,6 +181,13 @@ const deleteReply = async (req, res) => {
 }
 
 const deletePost = async (req, res) => {
+    const data = await BoardModel.findOne({
+        where: { postuid: req.params.bid },
+        raw: true
+    });
+    await GoodsModel.update({
+        isposted: false
+    }, { where: { goodsuid: data.goodsuid }});
     await BoardModel.destroy({
         where: { postuid: req.params.bid },
     });
@@ -159,10 +195,27 @@ const deletePost = async (req, res) => {
 }
 
 const deleteGoods = async (req, res) => {
+    await BoardModel.destroy({
+        where: { goodsuid: req.params.gid }
+    });
     await GoodsModel.destroy({
         where: { goodsuid: req.params.gid },
     });
     return res.redirect('/write');
+}
+
+const exchangeHandler = async (req, res) => {
+    const data = await BoardModel.findOne({
+        where: { postuid: req.params.bid },
+        raw: true
+    });
+    await GoodsModel.update({
+        issold: true
+    }, { where: { goodsuid: req.body.goodsuid }});
+    await GoodsModel.update({
+        issold: true
+    }, { where: { goodsuid: data.goodsuid }});
+    return res.redirect('/');
 }
 
 module.exports = {
@@ -178,4 +231,6 @@ module.exports = {
     deleteReply,
     deletePost,
     deleteGoods,
+    exchangeRenderer,
+    exchangeHandler
 };

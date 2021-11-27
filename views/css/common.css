@@ -1066,7 +1066,9 @@ a.challenge-prob-item-solved:active {
     justify-content: space-between;
 }
 .challenge-detail-submit-item {
-
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .challenge-detail-submit-item-flag {
     width: 920px;

@@ -34,6 +34,11 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(30),
             allowNull: false,
             unique: true
+        },
+        imgpath: {
+            type: DataTypes.STRING(100),
+            allowNull: false,
+            defaultValue: 0
         }
     }, {
         tableName: 'post',

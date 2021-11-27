@@ -37,14 +37,11 @@
         <div class="notice-main-container">
             <div class="notice-main-item">
                 <div class="notice-main-title">
-                    WRITE
+                    EXCHANGE
                 </div>
             </div>
             <br>
-            <form class="join-form" action="/write" method="POST", enctype="multipart/form-data">
-                <div class="post-input">
-                    <input class="writebox-tile" type="text" name="postcontent"/>
-                </div>
+            <form class="join-form" action="/board/detail/<%= current %>/exchange" method="POST">
                 <br><br>
                 <% for (let i = 0; i < data.length; i++) { %>
                     <div class="goods-add-type">
@@ -57,25 +54,19 @@
                     <br><br>
                 <% } %><br>
                 <div class="challenge-detail-submit-item">
-                    <input type="file" name="img" style="display: flex; align-items: center; justify-content: space-between;">
-                    <p style="text-align: center;">이미지 업로드하기 (없으면 무시)</p><br>
-                </div><br>
-                <div class="challenge-detail-submit-item">
                     <div class="challenge-detail-submit-item-button">
-                        <button class="button-primary-tile">게시글 추가하기</button>
+                        <button class="button-primary-tile">교환하기</button>
                     </div>
                 </div>
             </form>
             <div class="challenge-detail-submit-item">
                 <form action="/goods">
                     <div class="challenge-detail-submit-item-button">
-                        <p style="text-align: center;">위의 상품 중 판매 할 것을 고르고</p>
-                        <p style="text-align: center;">상품을 설명해주세요!</p>
-                        <br>
+                        <p style="text-align: center;">교환할 물건을 선택해주세요!</p>
                         <p style="text-align: center;">만약 선택할 물건이 없다면?</p><br>
                         <button class="button-primary-tile">물건 추가하기</button>
                     </div>
-                    <br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br>
                 </form>
             </div>
         </div>

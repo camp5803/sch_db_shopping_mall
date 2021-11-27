@@ -71,6 +71,7 @@ const profileRenderer = async (req, res) => {
         return a;
     }, await BoardModel.findAll({
         order: [['likes', 'DESC']],
+        where: { poster: req.user.uuid },
         include: [{
             model: UserModel,
             attributes: ['sname']
