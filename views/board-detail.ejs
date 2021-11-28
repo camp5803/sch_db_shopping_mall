@@ -57,6 +57,11 @@
                     <% if (uuid === data.poster) { %>
                         <hr class="challenge-detail-main-item-divider-v divider"/>
                         <a style="text-decoration-line: none; color: var(--color-primary-45);"
+                           href="/board/detail/modify/<%= data.postuid %>">수정하기</a>
+                    <% } %>
+                    <% if (uuid === data.poster) { %>
+                        <hr class="challenge-detail-main-item-divider-v divider"/>
+                        <a style="text-decoration-line: none; color: var(--color-primary-45);"
                            href="/board/detail/delete/<%= data.postuid %>">삭제하기</a>
                     <% } %>
                 </div>
@@ -90,13 +95,15 @@
                 <!--                </div>-->
                 <!--            </form>-->
                 <br><br>
-                <form action="/board/detail/<%= current %>/payment" method="POST">
-                    <div class="challenge-detail-submit-item">
-                        <div class="challenge-detail-pay-item-button">
-                            <button class="button-primary-tile">구매하기</button>
+                <% if (uuid !== data.poster) { %>
+                    <form action="/board/detail/<%= current %>/payment" method="POST">
+                        <div class="challenge-detail-submit-item">
+                            <div class="challenge-detail-pay-item-button">
+                                <button class="button-primary-tile">구매하기</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                <% } %>
                 <% if (uuid !== data.poster) { %>
                     <form action="/board/detail/<%= current %>/exchange" method="GET">
                         <div class="challenge-detail-submit-item">

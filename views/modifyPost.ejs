@@ -22,7 +22,7 @@
             <a class="navbar-link" href="/types">SEARCH</a>
         </div>
         <div class="navbar-item navbar-item-profile">
-            <a class="navbar-link navbar-link-active" href="/write">WRITE</a>
+            <a class="navbar-link" href="/write">WRITE</a>
         </div>
         <div class="navbar-item">
             <a class="navbar-link" href="/profile">PROFILE</a>
@@ -37,19 +37,19 @@
         <div class="notice-main-container">
             <div class="notice-main-item">
                 <div class="notice-main-title">
-                    WRITE
+                    MODIFY
                 </div>
             </div>
             <br>
             <form class="join-form" action="/write" method="POST", enctype="multipart/form-data">
                 <div class="post-input">
-                    <input class="writebox-tile" type="text" name="postcontent"/>
+                    <input class="writebox-tile" type="text" name="postcontent" value="<%=result.postcontent%>"/>
                 </div>
                 <br><br>
                 <% for (let i = 0; i < data.length; i++) { %>
                     <div class="goods-add-type">
                         <div>
-                            <input class="radio-def" type="radio" name="goodsuid" value="<%= data[i].goodsuid %>">
+                            <input class="radio-def" type="radio" name="goodsuid" value="<%= data[i].goodsuid %>" <% if (data[i].goodsuid === result.goodsuid) { %>checked="checked" <% } %>>
                             <label for="<%= data[i].goodsuid %>"><%= data[i].gname %> &nbsp-</label>
                             <a style="text-decoration: none; color: var(--color-primary-45); font-size: 20px;" href="/goods/modify/<%=data[i].goodsuid%>">&nbsp수정하기</a>
                             <a style="text-decoration: none; color: var(--color-primary-45); font-size: 20px;" href="/goods/delete/<%=data[i].goodsuid%>">&nbsp삭제하기</a>

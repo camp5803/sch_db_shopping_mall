@@ -2,6 +2,7 @@ const UserModel = require('../models').Users;
 const BoardModel = require('../models').Post;
 const ReplyModel = require('../models').Reply;
 const GoodsModel = require('../models').Goods;
+const { Op } = require("sequelize");
 const { map, filter } = require('./fp');
 
 const boardRenderer = async (req, res) => {
@@ -218,6 +219,55 @@ const exchangeHandler = async (req, res) => {
     return res.redirect('/');
 }
 
+const modifyRenderer = async (req, res) => {
+    const result = await GoodsModel.findOne({
+        where: { goodsuid: req.params.gid },
+        raw: true
+    });
+    return res.render('modify', { result, current: req.params.gid });
+}
+
+const modifyHandler = async (req, res) => {
+    await GoodsModel.update({
+        gname: req.body.gname,
+        type: req.body.type,
+        price: req.body.price,
+        seller: req.user.uuid,
+    }, { where: { goodsuid: req.params.gid }});
+    return res.redirect('/');
+};
+
+const modifyPostRenderer = async (req, res) => {
+    const result = await BoardModel.findOne({
+        where: { postuid: req.params.bid },
+        raw: true
+    });
+    const data = map(a => a.toJSON(), await GoodsModel.findAll({
+        where: { [Op.or]: [{ seller: req.user.uuid, isposted: false }, { goodsuid: result.goodsuid }] },
+    }));
+    return res.render('modifyPost', { data, result });
+};
+
+const modifyPostHandler = async (req, res) => {
+    if (req.file === undefined) {
+        req.file = {
+            'filename': 0
+        }
+    }
+    const goods = await GoodsModel.findOne({
+        where: { goodsuid: req.body.goodsuid },
+        raw: true
+    });
+    await BoardModel.update({
+        poster: req.user.uuid,
+        postcontent: req.body.postcontent,
+        goodsuid: req.body.goodsuid,
+        gname: goods.gname,
+        imgpath: req.file.filename
+    }, { where: { postuid: req.params.bid }});
+    return res.redirect('/');
+}
+
 module.exports = {
     boardRenderer,
     boardDetailRenderer,
@@ -232,5 +282,9 @@ module.exports = {
     deletePost,
     deleteGoods,
     exchangeRenderer,
-    exchangeHandler
+    exchangeHandler,
+    modifyHandler,
+    modifyRenderer,
+    modifyPostRenderer,
+    modifyPostHandler,
 };

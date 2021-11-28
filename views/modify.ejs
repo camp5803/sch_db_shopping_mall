@@ -1,0 +1,83 @@
+<!doctype html>
+<html class="theme-dark theme-font">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCH DISE Market</title>
+    <!---->
+    <link rel="stylesheet" href="/css/theme.css">
+    <link rel="stylesheet" href="/css/controls.css">
+    <link rel="stylesheet" href="/css/common.css">
+</head>
+<body>
+<div class="navbar">
+    <div class="navbar-content">
+        <a class="navbar-item-title secu-title-s" href="/">
+            SCH DISE Market
+        </a>
+        <div class="navbar-item">
+            <a class="navbar-link" href="/board">Board</a>
+        </div>
+        <div class="navbar-item">
+            <a class="navbar-link" href="/types">SEARCH</a>
+        </div>
+        <div class="navbar-item navbar-item-profile">
+            <a class="navbar-link navbar-link-active" href="/write">WRITE</a>
+        </div>
+        <div class="navbar-item">
+            <a class="navbar-link" href="/profile">PROFILE</a>
+        </div>
+        <div class="navbar-item">
+            <a class="navbar-link" href="/logout">LOGOUT</a>
+        </div>
+    </div>
+</div>
+<div id="posting-root">
+    <div class="ingame-content">
+        <div class="goods-card">
+            <form class="join-form" action="/goods/modify/<%=current%>" method="POST">
+                <div class="join-title">
+                    GOODS MODIFY
+                </div>
+                <div class="join-input">
+                    <input class="textbox-tile" name="gname" type="text" placeholder="물건 이름" value="<%=result.gname%>"/>
+                </div>
+                <div class="join-input">
+                    <input class="textbox-tile" type="text" name="price" placeholder="가격 (숫자만 입력)" value="<%=result.price%>"/>
+                </div>
+                <div class="join-type">
+                    <div>
+                        <input class="radio-def" type="radio" name="type" value="foods" <% if (result.type === "foods") { %> checked="checked" <% } %>>
+                        <label for="foods">음식</label>
+                    </div>
+                    <div>
+                        <input class="radio-def" type="radio" name="type" value="clothes" <% if (result.type === "clothes") { %> checked="checked" <% } %>>
+                        <label for="clothes">의류</label>
+                    </div>
+                    <div>
+                        <input class="radio-def" type="radio" name="type" value="coupons" <% if (result.type === "coupons") { %> checked="checked" <% } %>>
+                        <label for="coupons">기프티콘</label>
+                    </div>
+                </div>
+                <div class="join-type">
+                    <div>
+                        <input class="radio-def" type="radio" name="type" value="books" <% if (result.type === "books") { %> checked="checked" <% } %>>
+                        <label for="books">서적</label>
+                    </div>
+                    <div>
+                        <input class="radio-def" type="radio" name="type" value="etc" <% if (result.type === "etc") { %> checked="checked" <% } %>>
+                        <label for="etc">ETC</label>
+                    </div>
+
+                    <div>
+                        <input class="radio-def" type="radio" name="type" value="techs" <% if (result.type === "techs") { %> checked="checked" <% } %>>
+                        <label for="techs">전자기기</label>
+                    </div>
+                </div>
+                <div class="join-register">
+                    <button class="button-primary-tile" name="subbtn">등록</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
